@@ -1,2 +1,0 @@
-# IUST
-## fuck me hard
