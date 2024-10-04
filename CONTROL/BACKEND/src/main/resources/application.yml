@@ -1,4 +1,7 @@
 spring:
+  web:
+    resources:
+      static-locations: file:/UI/dist/
   path:
     formsFolderPath: /home/control/control-group-site/forms/
     newsFolderPath: /home/control/control-group-site/news/

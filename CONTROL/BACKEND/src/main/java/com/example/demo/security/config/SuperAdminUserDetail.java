@@ -1,7 +1,6 @@
 package com.example.demo.security.config;
 
 import com.example.demo.entity.Admin;
-import com.example.demo.entity.SuperAdmin;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -9,11 +8,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+
 @Getter
 public class SuperAdminUserDetail implements UserDetails {
-    private final SuperAdmin superAdmin;
+    private final Admin superAdmin;
 
-    public SuperAdminUserDetail(SuperAdmin superAdmin) {
+    public SuperAdminUserDetail(Admin superAdmin) {
         this.superAdmin = superAdmin;
     }
 
@@ -29,7 +29,7 @@ public class SuperAdminUserDetail implements UserDetails {
 
     @Override
     public String getUsername() {
-        return superAdmin.getUsername();
+        return superAdmin.getAdminId();
     }
 
     @Override

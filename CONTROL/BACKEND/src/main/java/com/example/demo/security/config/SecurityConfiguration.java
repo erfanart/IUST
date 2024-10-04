@@ -19,28 +19,29 @@ public class SecurityConfiguration {
     private final JwtAuthenticationFilter jwtAuthFilter;
 
     private final AuthenticationProvider authenticationProvider;
-//     public SecurityConfiguration(JwtAuthenticationFilter jwtAuthFilter, AuthenticationProvider authenticationProvider) {
-//         this.jwtAuthFilter = jwtAuthFilter;
-//         this.authenticationProvider = authenticationProvider;
-//     }
+
+    // public SecurityConfiguration(JwtAuthenticationFilter jwtAuthFilter,
+    // AuthenticationProvider authenticationProvider) {
+    // this.jwtAuthFilter = jwtAuthFilter;
+    // this.authenticationProvider = authenticationProvider;
+    // }
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
-                        authorizeRequests ->{
+                        authorizeRequests -> {
                             authorizeRequests
-                            
-                            
-                                .requestMatchers("/api/v1/home/show_forms", 
-                                "/api/v1/home/show_laboratories", 
-                                "/api/v1/home/show_news", 
-                                "/api/v1/home/show_science_committees").permitAll()
-                                
-                                .requestMatchers("/api/v1/**").authenticated()
-                                
-  
-                                .requestMatchers("/**").permitAll();
+
+                                    .requestMatchers("/api/v1/home/show_forms",
+                                            "/api/v1/home/show_laboratories",
+                                            "/api/v1/home/show_news",
+                                            "/api/v1/home/show_science_committees")
+                                    .permitAll()
+
+                                    .requestMatchers("/api/v1/**").authenticated()
+
+                                    .requestMatchers("/**").permitAll();
                             http.authenticationProvider(authenticationProvider)
                                     .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 

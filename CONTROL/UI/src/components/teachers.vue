@@ -1,12 +1,12 @@
 <template>
   <div
-    class="xl:h-[1500px] w-full border border-blue-600 flex flex-wrap justify-around"
+    class="xl:h-[1500px] w-full flex flex-wrap justify-around"
   >
     <p class="w-full text-center mt-10 font-bold text-[30px] h-[10%]">
       اعضای هیات علمی
     </p>
     <ul
-      class="w-full h-[88%] border border-cyan-600 xl:gap-x-[10%] sm:gap-x-[25%] gap-y-2 flex justify-center xl:justify-around flex-wrap"
+      class="w-full h-[88%] xl:gap-x-[10%] sm:gap-x-[25%] gap-y-2 flex justify-center xl:justify-around flex-wrap"
     >
       <li
         class="h-[410px] w-[51%] sm:w-[20%] rounded-3xl overflow-hidden flex justify-center flex-wrap content-start"

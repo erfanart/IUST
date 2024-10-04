@@ -6,6 +6,7 @@ import com.example.demo.dto.LaboratoryDto;
 import com.example.demo.dto.NewsDto;
 import com.example.demo.dto.ScienceCommitteeDto;
 import com.example.demo.entity.*;
+import com.example.demo.entity.enums.AdminRoles;
 import com.example.demo.exceptions.*;
 import com.example.demo.mapper.AdminMapper;
 import com.example.demo.mapper.FormMapper;
@@ -44,7 +45,6 @@ public class AdminServiceImpl implements AdminService {
     private final CustomUserDetailsService customUserDetailsService;
     private Validation validation = new Validation();
 
-
     @Value("${spring.path.formsFolderPath}")
     private String formsFolderPAth;
     @Value("${spring.path.newsFolderPath}")
@@ -52,9 +52,11 @@ public class AdminServiceImpl implements AdminService {
     @Value("${spring.path.scienceCommitteeFolderPath}")
     private String scienceCommitteeFolderPath;
 
-
     @Autowired
-    public AdminServiceImpl(AdminRepository adminRepository, FormService formService, LaboratoryService laboratoryService, NewsService newsService, ScienceCommitteeService scienceCommitteeService, ImageService imageService, JwtService jwtService, PasswordEncoder passwordEncoder, CustomUserDetailsService customUserDetailsService) {
+    public AdminServiceImpl(AdminRepository adminRepository, FormService formService,
+            LaboratoryService laboratoryService, NewsService newsService,
+            ScienceCommitteeService scienceCommitteeService, ImageService imageService, JwtService jwtService,
+            PasswordEncoder passwordEncoder, CustomUserDetailsService customUserDetailsService) {
         this.adminRepository = adminRepository;
         this.formService = formService;
         this.laboratoryService = laboratoryService;
@@ -66,26 +68,89 @@ public class AdminServiceImpl implements AdminService {
         this.customUserDetailsService = customUserDetailsService;
     }
 
-        @Override
-    public Admin save(Admin admin) {
-        return adminRepository.save(admin);
+    @Override
+    public void addAdmin(String firstname, String lastname, String adminId, String password, String adminRole) {
+        try {
+            validation.validatePassword(password);
+            Admin admin = Admin.builder()
+                    .firstName(firstname)
+                    .lastName(lastname)
+                    .adminId(adminId)
+                    .password(password)
+                    .isDeleted(false)
+                    .build();
+            if (adminRole.equals("ADMIN")) {
+                admin.setAdminRoles(AdminRoles.ADMIN);
+            } else if (adminRole.equals("SUPER")) {
+                admin.setAdminRoles(AdminRoles.SUPER);
+            } else {
+                throw new AdminException("please enter ADMIN or SUPER for admin role");
+            }
+            adminRepository.save(admin);
+        } catch (Exception e) {
+            throw new AdminException(e.getMessage());
+        }
     }
 
     @Override
-    public Admin findByID(Long id) {
+    public void updateAdmin(Long id, String firstname, String lastname, String adminId, String password,
+            String adminRole) {
+        try {
+            Optional<Admin> admin = adminRepository.findById(id);
+            if (admin.isPresent()) {
+                if (!Objects.equals(adminRole, "")) {
+                    if (adminRole.equals("ADMIN")) {
+                        admin.get().setAdminRoles(AdminRoles.ADMIN);
+                        admin.get().setAdminRoles(AdminRoles.ADMIN);
+                    } else if (adminRole.equals("SUPER")) {
+                        admin.get().setAdminRoles(AdminRoles.SUPER);
+                        admin.get().setAdminRoles(AdminRoles.SUPER);
+                    } else {
+                        throw new AdminException("please enter ADMIN or SUPER for admin role");
+                    }
+                }
+                if (!Objects.equals(password, "")) {
+                    validation.validatePassword(password);
+                    admin.get().setPassword(password);
+                }
+                if (!Objects.equals(adminId, "")) {
+                    admin.get().setAdminId(adminId);
+                }
+                if (!Objects.equals(lastname, "")) {
+                    admin.get().setLastName(lastname);
+                }
+                if (!Objects.equals(firstname, "")) {
+                    admin.get().setFirstName(firstname);
+                }
+                adminRepository.save(admin.get());
+            } else {
+                throw new AdminException("admin not found");
+            }
+        } catch (Exception e) {
+            throw new AdminException(e.getMessage());
+        }
+    }
+
+    @Override
+    public void deleteAdmin(Long id) {
         Optional<Admin> admin = adminRepository.findById(id);
-        if (admin.isPresent()){
-            return admin.get();
-        }else {
+        if (admin.isPresent()) {
+            admin.get().setIsDeleted(true);
+            adminRepository.save(admin.get());
+        } else {
             throw new AdminException("admin not found");
         }
     }
 
     @Override
+    public Optional<Admin> findByID(Long id) {
+        return adminRepository.findById(id);
+    }
+
+    @Override
     public List<AdminDto> showAdmins() {
         List<AdminDto> adminDtos = new ArrayList<>();
-        for (Admin a: adminRepository.showAdmins()
-             ) {
+        for (Admin a : adminRepository.showAdmins()) {
             adminDtos.add(AdminMapper.adminToAdminDto(a));
         }
         return adminDtos;
@@ -95,14 +160,19 @@ public class AdminServiceImpl implements AdminService {
     public AuthenticationResponse authenticate(String managerId, String password) {
         Optional<Admin> admin = adminRepository.findByAdminId(managerId);
         if (admin.isPresent()) {
-            if (password.equals(admin.get().getPassword()) ||passwordEncoder.matches(password, admin.get().getPassword())) {
+            if (admin.get().getAdminRoles().equals(AdminRoles.ADMIN)) {
+                Validation.userType = "ADMIN";
+            } else {
+                Validation.userType = "SUPER";
+            }
+            if (password.equals(admin.get().getPassword())
+                    || passwordEncoder.matches(password, admin.get().getPassword())) {
 
                 String jwtToken = jwtService.generateToken(customUserDetailsService.loadUserByUsername(managerId));
 
                 return AuthenticationResponse.builder()
                         .token(jwtToken)
                         .build();
-
             } else {
                 throw new PasswordException("password not match with manager id");
             }
@@ -179,19 +249,18 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public void addScienceCommittee(String firstname, String lastName, String mail, String description, MultipartFile file) {
+    public void addScienceCommittee(String firstname, String lastName, String mail, String description,
+            MultipartFile file) {
         try {
             validation.validateMail(mail);
             validation.validationImage(file.getContentType());
             String filePath = scienceCommitteeFolderPath + file.getOriginalFilename();
-            scienceCommitteeService.save(ScienceCommittee.builder().
-                    firstName(firstname)
+            scienceCommitteeService.save(ScienceCommittee.builder().firstName(firstname)
                     .lastName(lastName)
                     .mail(mail)
                     .description(description)
                     .isDeleted(false)
-                    .image(imageService.save(Image.builder().
-                            name(file.getOriginalFilename())
+                    .image(imageService.save(Image.builder().name(file.getOriginalFilename())
                             .type(file.getContentType())
                             .filePath(filePath)
                             .isDeleted(false)
@@ -208,10 +277,10 @@ public class AdminServiceImpl implements AdminService {
         try {
             String filePath = formsFolderPAth + file.getOriginalFilename();
             Form form = formService.findById(formId);
-            if (!Objects.equals(newTitle, "")){
+            if (!Objects.equals(newTitle, "")) {
                 form.setTitle(newTitle);
             }
-            if(!file.isEmpty()){
+            if (!file.isEmpty()) {
                 if (!file.getContentType().equals("application/pdf")) {
                     throw new FormException("please upload file with pdf format");
                 }
@@ -231,20 +300,21 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public void updateLaboratory(Long laboratoryId, String newName, String newPlace, String newHead, String newDescription) {
+    public void updateLaboratory(Long laboratoryId, String newName, String newPlace, String newHead,
+            String newDescription) {
         try {
             Laboratory laboratory = laboratoryService.findById(laboratoryId);
-            if (!Objects.equals(newName, "")){
+            if (!Objects.equals(newName, "")) {
                 laboratory.setName(newName);
             }
-            if (!Objects.equals(newPlace, "")){
+            if (!Objects.equals(newPlace, "")) {
                 laboratory.setPlace(newPlace);
             }
-            if (!Objects.equals(newHead, "")){
+            if (!Objects.equals(newHead, "")) {
                 laboratory.setHead(newHead);
             }
-            if (!Objects.equals(newDescription, "")){
-             laboratory.setDescription(newDescription);
+            if (!Objects.equals(newDescription, "")) {
+                laboratory.setDescription(newDescription);
             }
             laboratoryService.save(laboratory);
         } catch (LaboratoryException e) {
@@ -286,17 +356,18 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public void updateScienceCommittee(Long scienceCommitteeId, String newFirstname, String newLastname, String newMail, String newDescription, MultipartFile file) {
+    public void updateScienceCommittee(Long scienceCommitteeId, String newFirstname, String newLastname, String newMail,
+            String newDescription, MultipartFile file) {
 
         try {
             ScienceCommittee scienceCommittee = scienceCommitteeService.findById(scienceCommitteeId);
             try {
-                if (!Objects.equals(newMail, "")){
+                if (!Objects.equals(newMail, "")) {
                     validation.validateMail(newMail);
                     scienceCommittee.setMail(newMail);
                 }
                 try {
-                    if (!file.isEmpty()){
+                    if (!file.isEmpty()) {
                         validation.validationImage(file.getContentType());
                         String filePath = scienceCommitteeFolderPath + file.getOriginalFilename();
                         Image image = imageService.findById(scienceCommittee.getImage().getId());
@@ -305,13 +376,13 @@ public class AdminServiceImpl implements AdminService {
                         file.transferTo(new File(filePath));
                         scienceCommittee.setImage(image);
                     }
-                    if (!Objects.equals(newFirstname, "")){
+                    if (!Objects.equals(newFirstname, "")) {
                         scienceCommittee.setFirstName(newFirstname);
                     }
-                    if (!Objects.equals(newLastname, "")){
+                    if (!Objects.equals(newLastname, "")) {
                         scienceCommittee.setLastName(newLastname);
                     }
-                    if (!Objects.equals(newDescription, "")){
+                    if (!Objects.equals(newDescription, "")) {
                         scienceCommittee.setDescription(newDescription);
                     }
                     scienceCommitteeService.save(scienceCommittee);
@@ -408,7 +479,7 @@ public class AdminServiceImpl implements AdminService {
     public byte[] downloadImage(String name) {
         try {
             return imageService.downloadImage(name);
-        }catch (ImageException e){
+        } catch (ImageException e) {
             throw new ImageException(e.getMessage());
         }
     }

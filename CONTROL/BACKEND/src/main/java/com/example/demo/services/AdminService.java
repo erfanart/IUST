@@ -8,18 +8,22 @@ import com.example.demo.entity.Admin;
 import com.example.demo.dto.ScienceCommitteeDto;
 import com.example.demo.security.config.AuthenticationResponse;
 import org.springframework.web.multipart.MultipartFile;
-
+import java.util.Optional;
 import java.util.List;
 
 public interface AdminService {
 
-    Admin save(Admin admin);
+    void addAdmin(String firstname, String lastname, String adminId, String password, String adminRole);
 
-    Admin findByID(Long id);
+    void updateAdmin(Long id, String firstname, String lastname, String adminId, String password, String adminRole);
+
+    void deleteAdmin(Long id);
+
+    Optional<Admin> findByID(Long id);
 
     List<AdminDto> showAdmins();
 
-    AuthenticationResponse authenticate(String managerId, String password);
+    AuthenticationResponse authenticate(String adminId, String password);
 
     void changePassword(String password, Long adminId);
 
@@ -37,7 +41,8 @@ public interface AdminService {
 
     void updateNews(Long newsId, String newTitle, String newNews, MultipartFile file);
 
-    void updateScienceCommittee(Long scienceCommitteeId, String newFirstname, String newLastname, String newMail, String newDescription, MultipartFile file);
+    void updateScienceCommittee(Long scienceCommitteeId, String newFirstname, String newLastname, String newMail,
+            String newDescription, MultipartFile file);
 
     List<FormDto> showForms();
 
@@ -54,6 +59,6 @@ public interface AdminService {
     void deleteNews(Long newsId);
 
     void deleteScienceCommittee(Long ScienceCommitteeId);
-    
+
     byte[] downloadImage(String name);
 }

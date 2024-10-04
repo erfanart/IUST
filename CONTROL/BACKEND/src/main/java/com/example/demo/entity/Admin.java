@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import com.example.demo.base.BaseEntity;
 
+import com.example.demo.entity.enums.AdminRoles;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
@@ -31,6 +32,7 @@ public class Admin extends BaseEntity<Long> {
     @Column(name = "admin_id")
     private String adminId;
     private String password;
+    @Enumerated
+    private AdminRoles adminRoles;
     private Boolean isDeleted;
-
 }

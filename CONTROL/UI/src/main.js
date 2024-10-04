@@ -2,7 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import "./assets/tailwind.css";
 import VueRouter from "vue-router";
-import admin from "./components/admin.vue";
+import login from "./components/login.vue";
 import main from "./home.vue";
 Vue.use(VueRouter);
 
@@ -15,7 +15,7 @@ const router = new VueRouter({
     },
     {
       path: "/admin",
-      component: admin,
+      component:login,
     },
   ],
 });

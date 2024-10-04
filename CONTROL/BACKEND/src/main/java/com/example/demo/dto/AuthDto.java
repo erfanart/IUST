@@ -1,7 +1,5 @@
-package com.example.demo.entity;
+package com.example.demo.dto;
 
-import com.example.demo.base.BaseEntity;
-import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,8 +11,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@Entity
-public class SuperAdmin extends BaseEntity<Long> {
-    private String username;
+public class AuthDto {
+    private String adminId;
     private String password;
 }

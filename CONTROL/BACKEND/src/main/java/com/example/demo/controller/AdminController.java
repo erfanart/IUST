@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.AdminDto;
+import com.example.demo.dto.AuthDto;
 import com.example.demo.dto.FormDto;
 import com.example.demo.dto.LaboratoryDto;
 import com.example.demo.dto.NewsDto;
@@ -30,13 +32,11 @@ public class AdminController {
     }
 
     @GetMapping("/authenticate")
-    public ResponseEntity<AuthenticationResponse> authenticate(@RequestParam @Validated String adminId,
-            @RequestParam @Validated String password) {
-        Validation.userType = "ADMIN";
-        return ResponseEntity.ok(adminService.authenticate(adminId, password));
+    public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody @Validated AuthDto authDto) {
+        return ResponseEntity.ok(adminService.authenticate(authDto.getAdminId(), authDto.getPassword()));
     }
 
-    @PostMapping("/change_password")
+    @PutMapping("/change_password")
     public ResponseEntity<String> changePassword(@RequestParam @Validated Long adminId,
             @RequestParam @Validated String password) {
         String message = "password changed";
@@ -46,6 +46,54 @@ public class AdminController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(message, HttpStatus.ACCEPTED);
+    }
+
+    @PostMapping("/add_admin")
+    public ResponseEntity<String> addAdmin(@RequestParam @Validated String firstname,
+            @RequestParam @Validated String lastname,
+            @RequestParam @Validated String adminId,
+            @RequestParam @Validated String password,
+            @RequestParam @Validated String adminRole) {
+        String message = "admin added";
+        try {
+            adminService.addAdmin(firstname, lastname, adminId, password, adminRole);
+            return ResponseEntity.status(HttpStatus.OK).body(message);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PutMapping("/update_admin")
+    public ResponseEntity<String> updateAdmin(@RequestParam @Validated Long id,
+            @RequestParam @Validated String firstname,
+            @RequestParam @Validated String lastname,
+            @RequestParam @Validated String adminId,
+            @RequestParam @Validated String password,
+            @RequestParam @Validated String adminRole) {
+        String message = "admin updated";
+        try {
+            adminService.updateAdmin(id, firstname, lastname, adminId, password, adminRole);
+            return ResponseEntity.status(HttpStatus.OK).body(message);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @DeleteMapping("/delete_admin")
+    public ResponseEntity<String> deleteAdmin(@RequestParam @Validated Long id) {
+        String message = "admin deleted";
+        try {
+            adminService.deleteAdmin(id);
+            return ResponseEntity.status(HttpStatus.OK).body(message);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/show_admins")
+
+    public ResponseEntity<List<AdminDto>> showAdmins() {
+        return new ResponseEntity<>(adminService.showAdmins(), HttpStatus.ACCEPTED);
     }
 
     @PostMapping("/add_form")
