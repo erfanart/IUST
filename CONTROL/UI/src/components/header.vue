@@ -2,8 +2,8 @@
   <div>
     <header class="w-full h-[129px] fixed top-0 z-50">
       <div class="w-full h-[54px] flex justify-between topHeader">
-        <img src="../assets/IUST_wite 2.png" alt="" />
-        <img src="../assets/گروه کنترل دانشکده ی برق.png" alt="" />
+        <img src="@/assets/IUST_wite 2.png" alt="" />
+        <img src="@/assets/گروه کنترل دانشکده ی برق.png" alt="" />
       </div>
       <div
         class="bottomHeader w-full relative flex justify-center gap-2 h-[70px] md:h-[60px]"
@@ -188,8 +188,6 @@
     </header>
   </div>
 </template>
-
-
 
 <script>
 export default {
@@ -381,7 +379,6 @@ export default {
   },
 };
 </script>
-
 
 <style>
 header {

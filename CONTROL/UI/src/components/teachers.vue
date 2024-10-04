@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="xl:h-[1500px] w-full flex flex-wrap justify-around"
-  >
+  <div class="xl:h-[1500px] w-full flex flex-wrap justify-around">
     <p class="w-full text-center mt-10 font-bold text-[30px] h-[10%]">
       اعضای هیات علمی
     </p>
@@ -14,7 +12,7 @@
         :key="info.id"
       >
         <img
-          :src="`http://77.237.73.68:8084/api/v1/admin/fileSystem/${info.imageDto.name}`"
+          :src="`${API_BASE_URL}/home/fileSystem/${info.imageDto.name}`"
           alt=""
           class="h-[40%] w-[50%] mt-5"
         />
@@ -27,21 +25,21 @@
   </div>
 </template>
 <script>
+import { API } from "@/config/api";
 import axios from "axios";
 export default {
   name: "siteTeachers",
   data() {
     return {
       contents: null,
+      API_BASE_URL: API.BASE_URL,
     };
   },
   mounted() {
-    axios
-      .get("http://77.237.73.68:8084/api/v1/admin/show_science_committees")
-      .then((Response) => {
-        this.contents = Response.data;
-        console.log(this.contents[0]);
-      });
+    axios.get(API.HOME.SHOW_SCIENCE_COMMITTEES).then((Response) => {
+      this.contents = Response.data;
+      console.log(this.contents[0]);
+    });
   },
 };
 </script>

@@ -17,7 +17,7 @@
               :key="info.id"
             >
               <img
-                :src="`http://77.237.73.68:8084/api/v1/admin/fileSystem/${info.imageDto.name}`"
+                :src="`${API_BASE_URL}/home/fileSystem/${info.imageDto.name}`"
                 class="h-full"
                 @mouseover="show()"
               />
@@ -45,13 +45,14 @@
 </template>
 <script>
 import axios from "axios";
-
+import { API } from "@/config/api";
 export default {
   name: "siteNews",
   data() {
     return {
       news: null,
       isShowing: false,
+      API_BASE_URL: API.BASE_URL,
     };
   },
 
@@ -65,11 +66,9 @@ export default {
   },
 
   mounted() {
-    axios
-      .get("http://77.237.73.68:8084/api/v1/admin/show_news")
-      .then((Response) => {
-        this.news = Response.data;
-      });
+    axios.get(API.HOME.SHOW_NEWS).then((Response) => {
+      this.news = Response.data;
+    });
   },
 };
 </script>

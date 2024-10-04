@@ -1,0 +1,2059 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.2)
+
+2024-10-04T20:37:30.759Z  INFO 108595 --- [demo] [           main] com.example.demo.DemoApplication         : Starting DemoApplication v0.0.1-SNAPSHOT using Java 17.0.12 with PID 108595 (/home/control/IUST/CONTROL/storeImage-0.0.1-SNAPSHOT.jar started by control in /home/control/IUST/CONTROL)
+2024-10-04T20:37:30.764Z  INFO 108595 --- [demo] [           main] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2024-10-04T20:37:34.493Z  INFO 108595 --- [demo] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-04T20:37:34.856Z  INFO 108595 --- [demo] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 343 ms. Found 6 JPA repository interfaces.
+2024-10-04T20:37:36.650Z  INFO 108595 --- [demo] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8084 (http)
+2024-10-04T20:37:36.695Z  INFO 108595 --- [demo] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-10-04T20:37:36.698Z  INFO 108595 --- [demo] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-10-04T20:37:36.808Z  INFO 108595 --- [demo] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-10-04T20:37:36.811Z  INFO 108595 --- [demo] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5802 ms
+2024-10-04T20:37:37.188Z  INFO 108595 --- [demo] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-04T20:37:37.358Z  INFO 108595 --- [demo] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-10-04T20:37:37.472Z  INFO 108595 --- [demo] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-10-04T20:37:38.575Z  INFO 108595 --- [demo] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-04T20:37:38.643Z  INFO 108595 --- [demo] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-10-04T20:37:39.111Z  INFO 108595 --- [demo] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5464b97c
+2024-10-04T20:37:39.116Z  INFO 108595 --- [demo] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-10-04T20:37:39.209Z  WARN 108595 --- [demo] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-04T20:37:42.384Z  INFO 108595 --- [demo] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-04T20:37:42.595Z  INFO 108595 --- [demo] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-04T20:37:43.642Z  INFO 108595 --- [demo] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-10-04T20:37:44.794Z  INFO 108595 --- [demo] [           main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-04T20:37:44.796Z  WARN 108595 --- [demo] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-04T20:37:45.156Z  WARN 108595 --- [demo] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-04T20:37:45.339Z  INFO 108595 --- [demo] [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: URL [file:UI/dist/index.html]
+2024-10-04T20:37:46.458Z  WARN 108595 --- [demo] [           main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-10-04T20:37:46.985Z  INFO 108595 --- [demo] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8084 (http) with context path '/'
+2024-10-04T20:37:47.036Z  INFO 108595 --- [demo] [           main] com.example.demo.DemoApplication         : Started DemoApplication in 17.978 seconds (process running for 20.021)
+2024-10-04T20:38:39.927Z  INFO 108595 --- [demo] [nio-8084-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-04T20:38:39.929Z  INFO 108595 --- [demo] [nio-8084-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-10-04T20:38:39.943Z  INFO 108595 --- [demo] [nio-8084-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+Hibernate: 
+    select
+        * 
+    from
+        News 
+    where
+        is_deleted=false
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        * 
+    from
+        News 
+    where
+        is_deleted=false
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        * 
+    from
+        News 
+    where
+        is_deleted=false
+Hibernate: 
+    select
+        * 
+    from
+        science_committee 
+    where
+        is_deleted=false
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        * 
+    from
+        science_committee 
+    where
+        is_deleted=false
+Hibernate: 
+    select
+        * 
+    from
+        News 
+    where
+        is_deleted=false
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        * 
+    from
+        science_committee 
+    where
+        is_deleted=false
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        * 
+    from
+        News 
+    where
+        is_deleted=false
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        * 
+    from
+        News 
+    where
+        is_deleted=false
+Hibernate: 
+    select
+        * 
+    from
+        science_committee 
+    where
+        is_deleted=false
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        * 
+    from
+        science_committee 
+    where
+        is_deleted=false
+Hibernate: 
+    select
+        * 
+    from
+        News 
+    where
+        is_deleted=false
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        * 
+    from
+        News 
+    where
+        is_deleted=false
+Hibernate: 
+    select
+        * 
+    from
+        science_committee 
+    where
+        is_deleted=false
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        * 
+    from
+        News 
+    where
+        is_deleted=false
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        * 
+    from
+        science_committee 
+    where
+        is_deleted=false
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        * 
+    from
+        News 
+    where
+        is_deleted=false
+Hibernate: 
+    select
+        * 
+    from
+        science_committee 
+    where
+        is_deleted=false
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+2024-10-04T21:31:19.549Z ERROR 108595 --- [demo] [io-8084-exec-10] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.dao.IncorrectResultSizeDataAccessException: Query did not return a unique result: 10 results were returned] with root cause
+
+org.hibernate.NonUniqueResultException: Query did not return a unique result: 10 results were returned
+	at org.hibernate.query.spi.AbstractSelectionQuery.uniqueElement(AbstractSelectionQuery.java:578) ~[hibernate-core-6.5.2.Final.jar!/:6.5.2.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.getSingleResult(AbstractSelectionQuery.java:561) ~[hibernate-core-6.5.2.Final.jar!/:6.5.2.Final]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$SingleEntityExecution.doExecute(JpaQueryExecution.java:223) ~[spring-data-jpa-3.3.2.jar!/:3.3.2]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.3.2.jar!/:3.3.2]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:152) ~[spring-data-jpa-3.3.2.jar!/:3.3.2]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:140) ~[spring-data-jpa-3.3.2.jar!/:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170) ~[spring-data-commons-3.3.2.jar!/:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158) ~[spring-data-commons-3.3.2.jar!/:3.3.2]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:164) ~[spring-data-commons-3.3.2.jar!/:3.3.2]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.3.2.jar!/:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar!/:6.1.11]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:70) ~[spring-data-commons-3.3.2.jar!/:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar!/:6.1.11]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:379) ~[spring-tx-6.1.11.jar!/:6.1.11]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.11.jar!/:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar!/:6.1.11]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138) ~[spring-tx-6.1.11.jar!/:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar!/:6.1.11]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:136) ~[spring-data-jpa-3.3.2.jar!/:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar!/:6.1.11]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.1.11.jar!/:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar!/:6.1.11]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.1.11.jar!/:6.1.11]
+	at jdk.proxy2/jdk.proxy2.$Proxy136.findByName(Unknown Source) ~[na:na]
+	at com.example.demo.services.impl.ImageServiceImpl.downloadImage(ImageServiceImpl.java:43) ~[!/:0.0.1-SNAPSHOT]
+	at com.example.demo.services.impl.AdminServiceImpl.downloadImage(AdminServiceImpl.java:481) ~[!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.11.jar!/:6.1.11]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:716) ~[spring-aop-6.1.11.jar!/:6.1.11]
+	at com.example.demo.services.impl.AdminServiceImpl$$SpringCGLIB$$0.downloadImage(<generated>) ~[!/:0.0.1-SNAPSHOT]
+	at com.example.demo.controller.ClientController.downloadImage(ClientController.java:39) ~[!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.11.jar!/:6.1.11]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.11.jar!/:6.1.11]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.26.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at com.example.demo.security.config.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:36) ~[!/:0.0.1-SNAPSHOT]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.3.1.jar!/:6.3.1]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        News 
+    where
+        is_deleted=false
+Hibernate: 
+    select
+        * 
+    from
+        science_committee 
+    where
+        is_deleted=false
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        i1_0.id,
+        i1_0.file_path,
+        i1_0.is_deleted,
+        i1_0.name,
+        i1_0.type 
+    from
+        image i1_0 
+    where
+        i1_0.id=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+Hibernate: 
+    select
+        * 
+    from
+        image 
+    where
+        is_deleted = false 
+        and name=?
+2024-10-04T21:31:49.374Z ERROR 108595 --- [demo] [nio-8084-exec-3] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.dao.IncorrectResultSizeDataAccessException: Query did not return a unique result: 10 results were returned] with root cause
+
+org.hibernate.NonUniqueResultException: Query did not return a unique result: 10 results were returned
+	at org.hibernate.query.spi.AbstractSelectionQuery.uniqueElement(AbstractSelectionQuery.java:578) ~[hibernate-core-6.5.2.Final.jar!/:6.5.2.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.getSingleResult(AbstractSelectionQuery.java:561) ~[hibernate-core-6.5.2.Final.jar!/:6.5.2.Final]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$SingleEntityExecution.doExecute(JpaQueryExecution.java:223) ~[spring-data-jpa-3.3.2.jar!/:3.3.2]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.3.2.jar!/:3.3.2]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:152) ~[spring-data-jpa-3.3.2.jar!/:3.3.2]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:140) ~[spring-data-jpa-3.3.2.jar!/:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170) ~[spring-data-commons-3.3.2.jar!/:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158) ~[spring-data-commons-3.3.2.jar!/:3.3.2]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:164) ~[spring-data-commons-3.3.2.jar!/:3.3.2]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.3.2.jar!/:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar!/:6.1.11]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:70) ~[spring-data-commons-3.3.2.jar!/:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar!/:6.1.11]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:379) ~[spring-tx-6.1.11.jar!/:6.1.11]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.11.jar!/:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar!/:6.1.11]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138) ~[spring-tx-6.1.11.jar!/:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar!/:6.1.11]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:136) ~[spring-data-jpa-3.3.2.jar!/:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar!/:6.1.11]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.1.11.jar!/:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar!/:6.1.11]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.1.11.jar!/:6.1.11]
+	at jdk.proxy2/jdk.proxy2.$Proxy136.findByName(Unknown Source) ~[na:na]
+	at com.example.demo.services.impl.ImageServiceImpl.downloadImage(ImageServiceImpl.java:43) ~[!/:0.0.1-SNAPSHOT]
+	at com.example.demo.services.impl.AdminServiceImpl.downloadImage(AdminServiceImpl.java:481) ~[!/:0.0.1-SNAPSHOT]
+	at jdk.internal.reflect.GeneratedMethodAccessor44.invoke(Unknown Source) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.11.jar!/:6.1.11]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:716) ~[spring-aop-6.1.11.jar!/:6.1.11]
+	at com.example.demo.services.impl.AdminServiceImpl$$SpringCGLIB$$0.downloadImage(<generated>) ~[!/:0.0.1-SNAPSHOT]
+	at com.example.demo.controller.ClientController.downloadImage(ClientController.java:39) ~[!/:0.0.1-SNAPSHOT]
+	at jdk.internal.reflect.GeneratedMethodAccessor43.invoke(Unknown Source) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.11.jar!/:6.1.11]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.11.jar!/:6.1.11]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.26.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at com.example.demo.security.config.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:36) ~[!/:0.0.1-SNAPSHOT]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.3.1.jar!/:6.3.1]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.3.1.jar!/:6.3.1]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.11.jar!/:6.1.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.26.jar!/:na]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+

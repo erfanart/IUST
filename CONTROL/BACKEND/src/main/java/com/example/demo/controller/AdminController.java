@@ -31,7 +31,7 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-    @GetMapping("/authenticate")
+    @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody @Validated AuthDto authDto) {
         return ResponseEntity.ok(adminService.authenticate(authDto.getAdminId(), authDto.getPassword()));
     }

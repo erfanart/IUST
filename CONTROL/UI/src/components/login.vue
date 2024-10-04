@@ -24,6 +24,7 @@
 </template>
 <script>
 import axios from "axios";
+import { API } from "@/config/api";
 export default {
   name: "siteLogin",
   data() {
@@ -39,10 +40,7 @@ export default {
           adminId: this.adminId,
           password: this.password,
         };
-        const Response = await axios.post(
-          "77.237.73.68:8084/api/v1/admin/authenticate",
-          payload
-        );
+        const Response = await axios.post(API.LOGIN, payload);
         console.log("success:", Response.data);
       } catch (error) {
         console.error("there was error:", error);

@@ -21,16 +21,16 @@ export default {
 </script>
 <style scoped>
 .imgBox div {
-  background-image: url("./assets/دانشگاه\ علم\ و\ صنعت\ ایران.svg");
+  background-image: url("@/assets/دانشگاه\ علم\ و\ صنعت\ ایران.svg");
   background-repeat: no-repeat;
   background-size: contain;
 }
 @font-face {
   font-family: main;
-  src: url("assets/fonts/Vazirmatn-Black.woff2");
-  src: url("assets/fonts/Vazirmatn-Bold.woff2");
-  src: url("assets/fonts/Vazirmatn-ExtraBold.woff2");
-  src: url("assets/fonts/Vazirmatn-ExtraLight.woff2");
-  src: url("assets/fonts/Vazirmatn-Light.woff2");
+  src: url("@/assets/fonts/Vazirmatn-Black.woff2");
+  src: url("@/assets/fonts/Vazirmatn-Bold.woff2");
+  src: url("@/assets/fonts/Vazirmatn-ExtraBold.woff2");
+  src: url("@/assets/fonts/Vazirmatn-ExtraLight.woff2");
+  src: url("@/assets/fonts/Vazirmatn-Light.woff2");
 }
 </style>
