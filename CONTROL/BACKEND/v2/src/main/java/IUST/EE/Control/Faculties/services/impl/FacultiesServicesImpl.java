@@ -62,10 +62,7 @@ public class FacultiesServicesImpl implements FacultiesServices {
         return FacultiesDtos;
     };
 
-    public String addFaculties(String firstName, String lastName, String mail, String description,
-            MultipartFile image) {
-        UUID uuid = UUID.randomUUID();
-        String imageName = uuid.toString();
+    private FilesEntity addImage(MultipartFile image, String uuid) {
         @SuppressWarnings("unchecked")
         Map<String, Object> PWD = (Map<String, Object>) ((Map<String, Object>) ((Map<String, Object>) Properties.DataStore
                 .get("public"))
@@ -93,7 +90,7 @@ public class FacultiesServicesImpl implements FacultiesServices {
         }
         ;
 
-        String imagePath = WD + "/" + imageName + extension;
+        String imagePath = WD + "/" + uuid + extension;
         File destinationFile = new File(imagePath);
         try {
             System.out.println(" Uploaded file path is: " + destinationFile.getAbsolutePath());
@@ -102,23 +99,52 @@ public class FacultiesServicesImpl implements FacultiesServices {
             System.err.println("Error transferring the file: " + e.getMessage());
             e.printStackTrace();
         }
+        FilesEntity imageEntity = new FilesEntity();
+        imageEntity.setFilePath(destinationFile.toPath().toString());
+        imageEntity.setRelatedObject("faculties");
+        imageEntity.setType(imageType);
+        imageEntity.setIsDeleted(false);
+        FilesRepository.save(imageEntity);
+        return imageEntity;
+    }
 
-        FilesEntity imagedDto = new FilesEntity();
-        imagedDto.setFilePath(destinationFile.toPath().toString());
-        imagedDto.setRelatedObject("faculties");
-        imagedDto.setType(imageType);
-        imagedDto.setIsDeleted(false);
-        FilesRepository.save(imagedDto);
+    public String addFaculties(String firstName, String lastName, String mail, String description,
+            MultipartFile image) {
+        UUID uuid = UUID.randomUUID();
+        String imageName = uuid.toString();
         FacultiesEntity person = new FacultiesEntity();
         person.setFirstName(firstName);
         person.setLastName(lastName);
         person.setIsDeleted(false);
         person.setDescription(description);
         person.setMail(mail);
-        person.setImage(imagedDto);
+        person.setImage(addImage(image, imageName));
         this.Save(person);
         return "success";
     };
+
+    public String editFaculties(String id, String firstName, String lastName, String mail, String description,
+            MultipartFile image) {
+        FacultiesEntity person = this.Find(id);
+        if (firstName != null) {
+            person.setFirstName(firstName);
+        }
+        if (lastName != null) {
+            person.setLastName(lastName);
+        }
+        if (mail != null) {
+            person.setMail(mail);
+        }
+        if (description != null) {
+            person.setDescription(description);
+        }
+        if (image != null) {
+            String uuid = UUID.randomUUID().toString();
+            person.setImage(addImage(image, uuid));
+        }
+        this.Save(person);
+        return id + " Edited successfully";
+    }
 
     public String deleteFaculties(String id) {
         FacultiesEntity person = this.Find(id);

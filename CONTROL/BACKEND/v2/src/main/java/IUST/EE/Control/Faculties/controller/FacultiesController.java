@@ -57,6 +57,20 @@ public class FacultiesController {
 
     }
 
+    @PostMapping("/edit")
+    public ResponseEntity<String> editForm(
+            @RequestParam(required = true, name = "id") String id,
+            @RequestParam(required = false, name = "firstName") String name,
+            @RequestParam(required = false, name = "lastName") String lastName,
+            @RequestParam(required = false, name = "email") String email,
+            @RequestParam(required = false, name = "description") String description,
+            @RequestParam(required = false, name = "image") MultipartFile image) {
+        final String Resault = FacultiesServices.editFaculties(id, name, lastName, email, description,
+                image);
+        return ResponseEntity.ok(Resault);
+
+    }
+
     @PostMapping("/delete")
     public ResponseEntity<String> deleteFaculty(@RequestParam("id") String id) {
         final String Resault = FacultiesServices.deleteFaculties(id);
@@ -70,7 +84,7 @@ public class FacultiesController {
     }
 
     @PostMapping("/enable")
-    public ResponseEntity<String> enableFaculty(@RequestParam("id") String id) {
+    public ResponseEntity<String> enableFaculty(@RequestParam(required = false, name = "id") String id) {
         final String Resault = FacultiesServices.enableFaculties(id);
         return ResponseEntity.ok(Resault);
     }

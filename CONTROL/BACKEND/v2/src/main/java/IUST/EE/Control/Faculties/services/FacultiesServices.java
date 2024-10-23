@@ -17,6 +17,9 @@ public interface FacultiesServices {
     String addFaculties(String firstName, String lastName, String mail, String description,
             MultipartFile image);
 
+    String editFaculties(String id, String firstName, String lastName, String mail, String description,
+            MultipartFile image);
+
     String deleteFaculties(String id);
 
     String disableFaculties(String id);
