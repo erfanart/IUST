@@ -1,0 +1,22 @@
+{
+
+        "base":"https://control.rcsis.ir/api",
+        "public":{
+            "base":"",
+            "faculties":{
+                "base":"/faculties",
+                "show":"/show",
+                "image":"/image"
+            }
+        },
+        "admin":{
+                "base":"/admin",
+                "faculties":{
+                    "base":"/faculties",
+                    "show":"/show",
+                    "edit":"/edit"
+                }
+        }
+
+    
+}

@@ -1,0 +1,18 @@
+spring.application.name=Control
+spring.web.resources.static-locations= file:/home/control/IUST/CONTROL/UI/dist/
+spring.path.formsFolderPath= /home/control/control-group-site/forms/
+spring.path.newsFolderPath= /home/control/control-group-site/news/
+spring.path.scienceCommitteeFolderPath= /home/control/control-group-site/science-committee/
+
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.username=postgres
+spring.datasource.password=12345
+
+
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.format_sql=true
+server.port=8084

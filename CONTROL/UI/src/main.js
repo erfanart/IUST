@@ -2,8 +2,8 @@ import Vue from "vue";
 import App from "./App.vue";
 import "./assets/tailwind.css";
 import VueRouter from "vue-router";
-import login from "./components/login.vue";
-import main from "./home.vue";
+import admin from "./Admin/Home/admin.vue";
+import main from "./Public/Home/home.vue";
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -15,12 +15,12 @@ const router = new VueRouter({
     },
     {
       path: "/admin",
-      component:login,
+      component: admin,
     },
   ],
 });
-
 Vue.config.productionTip = false;
+
 
 new Vue({
   render: (h) => h(App),
