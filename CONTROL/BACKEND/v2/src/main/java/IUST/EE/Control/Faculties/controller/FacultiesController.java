@@ -1,7 +1,9 @@
 package IUST.EE.Control.Faculties.controller;
 
+// import java.io.File;
 import java.io.IOException;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import IUST.EE.Control.Properties;
 import IUST.EE.Control.Faculties.entity.dto.FacultiesDto;
 import IUST.EE.Control.Faculties.services.FacultiesServices;
+import IUST.EE.Control.Files.entity.FilesEntity;
 import IUST.EE.Control.Files.services.FilesServices;
 
 @Controller
@@ -40,8 +43,9 @@ public class FacultiesController {
     @GetMapping("/image/{name}")
     public ResponseEntity<?> downloadImage(String relatedObject, String type, @PathVariable String name)
             throws IOException {
-        byte[] imageData = FilesServices.download(relatedObject = "faculties", type = "image/png", name);
-        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(imageData);
+        byte[] imageData = FilesServices.download(relatedObject = "faculties", name);
+        FilesEntity file = FilesServices.getFileDetailes(name, relatedObject = "faculties");
+        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf(file.getType())).body(imageData);
     };
 
     @PostMapping("/add")
@@ -89,4 +93,4 @@ public class FacultiesController {
         return ResponseEntity.ok(Resault);
     }
 
-}
+};

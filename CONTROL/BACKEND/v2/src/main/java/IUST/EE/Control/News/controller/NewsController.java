@@ -11,4 +11,5 @@ public class NewsController {
     public String index() {
         return "News Page";
     }
+
 }

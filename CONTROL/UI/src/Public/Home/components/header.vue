@@ -41,11 +41,12 @@
             ></i>
           </div>
           <ul class="xl:flex justify-around items-center w-full h-full hidden">
-            <li
-              class="hover:text-blue-500 hover:transition-all hover:animate-bounce hover:duration-100 dp font-bold"
-              @click="opendp1"
-            >
-              راهنمای مسائل آموزشی
+            <li class="dp font-bold" @click="opendp1">
+              <div
+                class="hover:animate-bounce hover:duration-100 hover:text-blue-500 hover:transition-all"
+              >
+                راهنمای مسائل آموزشی
+              </div>
             </li>
             <li
               class="hover:text-blue-500 hover:transition-all hover:animate-bounce hover:duration-100 dp font-bold"

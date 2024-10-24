@@ -23,24 +23,39 @@ public class FilesServicesImpl implements FilesServices {
     @Autowired
     public FilesServicesImpl(FilesRepository FilesRepository) {
         this.FilesRepository = FilesRepository;
-    }
+    };
 
-    @Override
+    
     public FilesEntity Save(FilesEntity FilesEntity) {
         FilesRepository.save(FilesEntity);
         return FilesEntity;
-    }
+    };
+
+    public String deleteFile(String id,String relatedObject){
+        Optional<FilesEntity> fileData = FilesRepository.findFile(relatedObject, id);
+        FilesEntity File =fileData.get();
+        FilesRepository.delete(File);
+        return "";
+    };
 
     @Override
-    public byte[] download(String relatedObject, String type, String id) {
+    public byte[] download(String relatedObject, String id) {
         try {
-            Optional<FilesEntity> fileData = FilesRepository.findFile(relatedObject, type, id);
+            Optional<FilesEntity> fileData = FilesRepository.findFile(relatedObject, id);
             String filePath = fileData.get().getFilePath();
             byte[] images = Files.readAllBytes(new File(filePath).toPath());
             return images;
         } catch (IOException e) {
             throw new FilesExceptions(e.getMessage());
         }
+    };
+
+
+    @Override
+    public FilesEntity getFileDetailes(String id,String relatedObject) {
+            Optional<FilesEntity> fileData = FilesRepository.findFile(relatedObject, id);
+            FilesEntity File =fileData.get();
+            return File;
     }
 
     @Override

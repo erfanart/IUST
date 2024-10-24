@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface FilesServices {
     FilesEntity Save(FilesEntity FilesEntity);
+    FilesEntity getFileDetailes(String id,String relatedObject);
 
-    // FilesEntity Find(Long id);
-    byte[] download(String relatedObject, String type, String name);
-
+    byte[] download(String relatedObject, String id);
+    String deleteFile(String id,String relatedObject);
     List<FilesDto> ShowFiles(String type, String relatedObject);
 }

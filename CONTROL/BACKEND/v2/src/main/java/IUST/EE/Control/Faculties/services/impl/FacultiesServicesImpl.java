@@ -21,20 +21,24 @@ import IUST.EE.Control.Faculties.mapper.FacultiesMapper;
 import IUST.EE.Control.Faculties.repository.FacultiesRepository;
 import IUST.EE.Control.Faculties.services.FacultiesServices;
 import IUST.EE.Control.Files.entity.FilesEntity;
+import IUST.EE.Control.Files.exceptions.FilesExceptions;
 import IUST.EE.Control.Files.repository.FilesRepository;
+import IUST.EE.Control.Files.services.FilesServices;
 
 @Service
 public class FacultiesServicesImpl implements FacultiesServices {
     private final FacultiesRepository FacultiesRepository;
     private final FilesRepository FilesRepository;
+    private final FilesServices FilesServices;
     private final Properties Properties;
 
     @Autowired
     public FacultiesServicesImpl(FacultiesRepository FacultiesRepository, FilesRepository FilesRepository,
-            Properties Properties) {
+            Properties Properties, FilesServices FilesServices) {
         this.FacultiesRepository = FacultiesRepository;
         this.FilesRepository = FilesRepository;
         this.Properties = Properties;
+        this.FilesServices = FilesServices;
     };
 
     @Override
@@ -123,6 +127,24 @@ public class FacultiesServicesImpl implements FacultiesServices {
         return "success";
     };
 
+    private FilesEntity deleteImage(FilesEntity image) {
+        Optional<FilesEntity> imageRepo = FilesRepository.findById(image.getId());
+        if (imageRepo.isPresent()) {
+            FilesEntity imageEntity = imageRepo.get();
+            File destinationFile = new File(imageEntity.getFilePath());
+            try {
+                System.out.println("  file path is: " + destinationFile.getAbsolutePath() + " will be delete");
+                Files.deleteIfExists(destinationFile.toPath());
+            } catch (IOException e) {
+                System.err.println("Error transferring the file: " + e.getMessage());
+                e.printStackTrace();
+            }
+            return image;
+        } else {
+            throw new FilesExceptions();
+        }
+    };
+
     public String editFaculties(String id, String firstName, String lastName, String mail, String description,
             MultipartFile image) {
         FacultiesEntity person = this.Find(id);
@@ -140,7 +162,9 @@ public class FacultiesServicesImpl implements FacultiesServices {
         }
         if (image != null) {
             String uuid = UUID.randomUUID().toString();
+            FilesEntity lastImage = person.getImage();
             person.setImage(addImage(image, uuid));
+            FilesServices.deleteFile(this.deleteImage(lastImage).getId(), "faculties");
         }
         this.Save(person);
         return id + " Edited successfully";
