@@ -1,7 +1,9 @@
-const { defineConfig } = require('@vue/cli-service')
+const { defineConfig } = require("@vue/cli-service");
 module.exports = defineConfig({
-  	devServer: {
-   		port: 8085, // your desired port number
-  	},
-	transpileDependencies: true
-})
+  devServer: {
+    allowedHosts: "control.rcsis.ir",
+    host: "0.0.0.0",
+    port: 8084, // your desired port number
+  },
+  transpileDependencies: true,
+});

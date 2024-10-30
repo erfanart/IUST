@@ -5,25 +5,25 @@ import IUST.EE.Control.Faculties.entity.FacultiesEntity;
 import IUST.EE.Control.Faculties.entity.dto.FacultiesDto;
 
 public class FacultiesMapper {
-    public static FacultiesEntity FacultiesDtoToFacultiesEntity(FacultiesDto FacultiesDto) {
+    public static FacultiesEntity FacultiesDtoToFacultiesEntity(FacultiesDto facultiesDto) {
         return FacultiesEntity.builder()
-                .id(FacultiesDto.getId())
-                .firstName(FacultiesDto.getFirstName())
-                .lastName(FacultiesDto.getLastName())
-                .mail(FacultiesDto.getMail())
-                .description(FacultiesDto.getDescription())
-                .image(FilesMapper.FilesDtoToFilesEntity(FacultiesDto.getImage()))
+                .id(facultiesDto.getId())
+                .firstName(facultiesDto.getFirstName())
+                .lastName(facultiesDto.getLastName())
+                .mail(facultiesDto.getMail())
+                .description(facultiesDto.getDescription())
+                .image(FilesMapper.FilesDtoToFilesEntity(facultiesDto.getImage()))
                 .build();
     }
 
-    public static FacultiesDto FacultiesEntityToFacultiesDto(FacultiesEntity FacultiesEntity) {
+    public static FacultiesDto FacultiesEntityToFacultiesDto(FacultiesEntity facultiesEntity) {
         return FacultiesDto.builder()
-                .id(FacultiesEntity.getId())
-                .firstName(FacultiesEntity.getFirstName())
-                .lastName(FacultiesEntity.getLastName())
-                .mail(FacultiesEntity.getMail())
-                .description(FacultiesEntity.getDescription())
-                .image(FilesMapper.FilesEntityToFilesDto(FacultiesEntity.getImage()))
+                .id(facultiesEntity.getId())
+                .firstName(facultiesEntity.getFirstName())
+                .lastName(facultiesEntity.getLastName())
+                .mail(facultiesEntity.getMail())
+                .description(facultiesEntity.getDescription())
+                .image(FilesMapper.FilesEntityToFilesDto(facultiesEntity.getImage()))
                 .build();
     }
 }

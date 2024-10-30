@@ -38,4 +38,6 @@ data-store:
       images:
         dir: "DataStore/public/faculties/images"
     news:
-      dir:
+      dir: "DataStore/public/news"
+      images:
+        dir: "DataStore/public/news/images"

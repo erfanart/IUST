@@ -9,9 +9,14 @@
     <footer1></footer1>
   </div>
 </template>
+
+
+
+
+
 <script>
 import teacher from "./components/teachers.vue";
-import header1 from "./components/header.vue";
+import header1 from "./components/NavBar/NavBar.vue";
 import news from "./components/news.vue";
 import footer1 from "./components/footer.vue";
 
@@ -20,7 +25,19 @@ export default {
   components: { header1, news, footer1, teacher },
 };
 </script>
+
+
+
+
+
 <style scoped>
+.imgBox {
+  background-image: url("@/assets/image 9.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .imgBox div {
   background-image: url("@/assets/دانشگاه\ علم\ و\ صنعت\ ایران.svg");
   background-repeat: no-repeat;

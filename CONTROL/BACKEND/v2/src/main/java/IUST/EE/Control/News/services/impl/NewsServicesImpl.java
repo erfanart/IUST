@@ -1,5 +1,6 @@
-package IUST.EE.Control.Faculties.services.impl;
-
+package IUST.EE.Control.News.services.impl;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.io.File;
 import java.nio.file.Files;
 import java.io.IOException;
@@ -14,63 +15,68 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import IUST.EE.Control.Properties;
-import IUST.EE.Control.Faculties.entity.FacultiesEntity;
-import IUST.EE.Control.Faculties.entity.dto.FacultiesDto;
-import IUST.EE.Control.Faculties.exceptions.FacultiesExceptions;
-import IUST.EE.Control.Faculties.mapper.FacultiesMapper;
-import IUST.EE.Control.Faculties.repository.FacultiesRepository;
-import IUST.EE.Control.Faculties.services.FacultiesServices;
+import IUST.EE.Control.News.entity.NewsEntity;
+import IUST.EE.Control.News.entity.dto.NewsDto;
+import IUST.EE.Control.News.exceptions.NewsException;
+import IUST.EE.Control.News.mapper.NewsMapper;
+import IUST.EE.Control.News.repository.NewsRepository;
+import IUST.EE.Control.News.services.NewsServices;
 import IUST.EE.Control.Files.entity.FilesEntity;
 import IUST.EE.Control.Files.exceptions.FilesExceptions;
 import IUST.EE.Control.Files.repository.FilesRepository;
 import IUST.EE.Control.Files.services.FilesServices;
 
+
 @Service
-public class FacultiesServicesImpl implements FacultiesServices {
-    private final FacultiesRepository facultiesRepository;
+public class NewsServicesImpl implements NewsServices {
+
+    private final NewsRepository newsRepository;
     private final FilesRepository filesRepository;
     private final FilesServices filesServices;
     private final Properties properties;
 
     @Autowired
-    public FacultiesServicesImpl(FacultiesRepository facultiesRepository, FilesRepository filesRepository,
-            Properties properties, FilesServices filesServices) {
-        this.facultiesRepository = facultiesRepository;
+    public NewsServicesImpl(NewsRepository newsRepository,
+            FilesRepository filesRepository,
+            FilesServices filesServices,
+            Properties properties) {
+
+        this.newsRepository = newsRepository;
         this.filesRepository = filesRepository;
-        this.properties = properties;
         this.filesServices = filesServices;
-    };
+        this.properties = properties;
+    }
 
     @Override
-    public FacultiesEntity Save(FacultiesEntity facultiesEntity) {
-        facultiesRepository.save(facultiesEntity);
-        return facultiesEntity;
-    };
+    public NewsEntity save(NewsEntity newsEntity) {
+        newsRepository.save(newsEntity);
+        return newsEntity;
+    }
 
     @Override
-    public FacultiesEntity Find(String id) {
-        Optional<FacultiesEntity> Faculties = facultiesRepository.findById(id);
-        if (Faculties.isPresent()) {
-            return Faculties.get();
+    public NewsEntity findById(String id) {
+        Optional<NewsEntity> newsEntity = newsRepository.findById(id);
+        if (newsEntity.isPresent()) {
+            return newsEntity.get();
         } else {
-            throw new FacultiesExceptions("science committee not found");
+            throw new NewsException("news not found");
         }
-    };
+    }
 
     @Override
-    public List<FacultiesDto> ShowFaculties() {
-        List<FacultiesDto> FacultiesDtos = new ArrayList<>();
-        for (FacultiesEntity sc : facultiesRepository.showFaculties()) {
-            FacultiesDtos.add(FacultiesMapper.FacultiesEntityToFacultiesDto(sc));
+    public List<NewsDto> showNews() {
+        List<NewsDto> ans = new ArrayList<>();
+        for (NewsEntity n : newsRepository.showNews()) {
+            ans.add(NewsMapper.newsEntityToNewsDto(n));
         }
-        return FacultiesDtos;
-    };
+        return ans;
+    }
 
     private FilesEntity addImage(MultipartFile image, String uuid) {
         @SuppressWarnings("unchecked")
         Map<String, Object> PWD = (Map<String, Object>) ((Map<String, Object>) ((Map<String, Object>) properties.DataStore
                 .get("public"))
-                .get("faculties"))
+                .get("news"))
                 .get("images");
         String WD = (String) PWD.get("dir");
         File directory = new File(WD);
@@ -105,27 +111,28 @@ public class FacultiesServicesImpl implements FacultiesServices {
         }
         FilesEntity imageEntity = new FilesEntity();
         imageEntity.setFilePath(destinationFile.toPath().toString());
-        imageEntity.setRelatedObject("faculties");
+        imageEntity.setRelatedObject("news");
         imageEntity.setType(imageType);
         imageEntity.setIsDeleted(false);
         filesRepository.save(imageEntity);
         return imageEntity;
     }
 
-    public String addFaculties(String firstName, String lastName, String mail, String description,
-            MultipartFile image) {
+    @Override
+    public String addNews(String title, String news, MultipartFile image) {
         UUID uuid = UUID.randomUUID();
         String imageName = uuid.toString();
-        FacultiesEntity person = new FacultiesEntity();
-        person.setFirstName(firstName);
-        person.setLastName(lastName);
-        person.setIsDeleted(false);
-        person.setDescription(description);
-        person.setMail(mail);
-        person.setImage(addImage(image, imageName));
-        this.Save(person);
-        return "success";
-    };
+        NewsEntity newsEntity = new NewsEntity();
+        Instant instant = Instant.now();
+        newsEntity.setTitle(title);
+        newsEntity.setNews(news);
+        newsEntity.setIsDeleted(false);
+        newsEntity.setNewsNumber(Timestamp.from(instant));
+        newsEntity.setImage(addImage(image,imageName));
+        this.save(newsEntity);
+        return "news added";
+
+    }
 
     private FilesEntity deleteImage(FilesEntity image) {
         Optional<FilesEntity> imageRepo = filesRepository.findById(image.getId());
@@ -143,50 +150,54 @@ public class FacultiesServicesImpl implements FacultiesServices {
         } else {
             throw new FilesExceptions();
         }
-    };
+    }
 
-    public String editFaculties(String id, String firstName, String lastName, String mail, String description,
+    @Override
+    public String editNews(String id,
+            String title,
+            String news,
             MultipartFile image) {
-        FacultiesEntity person = this.Find(id);
-        if (firstName != null) {
-            person.setFirstName(firstName);
+
+        NewsEntity newsEntity = this.findById(id);
+        if (title != null) {
+            newsEntity.setTitle(title);
         }
-        if (lastName != null) {
-            person.setLastName(lastName);
-        }
-        if (mail != null) {
-            person.setMail(mail);
-        }
-        if (description != null) {
-            person.setDescription(description);
+        if (news != null) {
+            newsEntity.setNews(news);
         }
         if (image != null) {
             String uuid = UUID.randomUUID().toString();
-            FilesEntity lastImage = person.getImage();
-            person.setImage(addImage(image, uuid));
-            filesServices.deleteFile(this.deleteImage(lastImage).getId(), "faculties");
+            FilesEntity lastImage = newsEntity.getImage();
+            newsEntity.setImage(addImage(image, uuid));
+            filesServices.deleteFile(this.deleteImage(lastImage).getId(), "news");
         }
-        this.Save(person);
+        this.save(newsEntity);
         return id + " Edited successfully";
+
     }
 
-    public String deleteFaculties(String id) {
-        FacultiesEntity person = this.Find(id);
-        facultiesRepository.delete(person);
+    @Override
+    public String deleteNews(String id) {
+        NewsEntity newsEntity = this.findById(id);
+        newsRepository.delete(newsEntity);
         return id + " Deleted successfully";
+
     }
 
-    public String disableFaculties(String id) {
-        FacultiesEntity person = this.Find(id);
-        person.setIsDeleted(true);
-        this.Save(person);
+    @Override
+    public String disableNews(String id) {
+        NewsEntity newsEntity = this.findById(id);
+        newsEntity.setIsDeleted(true);
+        this.save(newsEntity);
         return id + " Disabled successfully";
     }
 
-    public String enableFaculties(String id) {
-        FacultiesEntity person = this.Find(id);
-        person.setIsDeleted(false);
-        this.Save(person);
-        return id + " Enabled successfully";
+    @Override
+    public String enableNews(String id) {
+        NewsEntity newsEntity = this.findById(id);
+        newsEntity.setIsDeleted(false);
+        this.save(newsEntity);
+        return id + " Disabled successfully";
     }
+
 }

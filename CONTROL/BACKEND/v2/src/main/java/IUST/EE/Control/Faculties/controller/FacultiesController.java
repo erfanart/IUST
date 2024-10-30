@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.stereotype.Controller;
 
-import IUST.EE.Control.Properties;
 import IUST.EE.Control.Faculties.entity.dto.FacultiesDto;
 import IUST.EE.Control.Faculties.services.FacultiesServices;
 import IUST.EE.Control.Files.entity.FilesEntity;
@@ -25,26 +24,25 @@ import IUST.EE.Control.Files.services.FilesServices;
 @Controller
 @RequestMapping("/api/faculties")
 public class FacultiesController {
-    private final FacultiesServices FacultiesServices;
-    private final FilesServices FilesServices;
+    private final FacultiesServices facultiesServices;
+    private final FilesServices filesServices;
 
     @Autowired
-    public FacultiesController(FacultiesServices FacultiesServices, FilesServices FilesServices,
-            Properties Properties) {
-        this.FacultiesServices = FacultiesServices;
-        this.FilesServices = FilesServices;
+    public FacultiesController(FacultiesServices facultiesServices, FilesServices FilesServices) {
+        this.facultiesServices = facultiesServices;
+        this.filesServices = FilesServices;
     };
 
     @GetMapping("/show")
     public ResponseEntity<List<FacultiesDto>> showFaculties() {
-        return new ResponseEntity<>(FacultiesServices.ShowFaculties(), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(facultiesServices.ShowFaculties(), HttpStatus.ACCEPTED);
     };
 
     @GetMapping("/image/{name}")
     public ResponseEntity<?> downloadImage(String relatedObject, String type, @PathVariable String name)
             throws IOException {
-        byte[] imageData = FilesServices.download(relatedObject = "faculties", name);
-        FilesEntity file = FilesServices.getFileDetailes(name, relatedObject = "faculties");
+        byte[] imageData = filesServices.download(relatedObject = "faculties", name);
+        FilesEntity file = filesServices.getFileDetailes(name, relatedObject = "faculties");
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf(file.getType())).body(imageData);
     };
 
@@ -55,7 +53,7 @@ public class FacultiesController {
             @RequestParam("email") String email,
             @RequestParam("description") String description,
             @RequestParam("image") MultipartFile image) {
-        final String Resault = FacultiesServices.addFaculties(name, lastName, email, description,
+        final String Resault = facultiesServices.addFaculties(name, lastName, email, description,
                 image);
         return ResponseEntity.ok(Resault);
 
@@ -69,7 +67,7 @@ public class FacultiesController {
             @RequestParam(required = false, name = "email") String email,
             @RequestParam(required = false, name = "description") String description,
             @RequestParam(required = false, name = "image") MultipartFile image) {
-        final String Resault = FacultiesServices.editFaculties(id, name, lastName, email, description,
+        final String Resault = facultiesServices.editFaculties(id, name, lastName, email, description,
                 image);
         return ResponseEntity.ok(Resault);
 
@@ -77,19 +75,19 @@ public class FacultiesController {
 
     @PostMapping("/delete")
     public ResponseEntity<String> deleteFaculty(@RequestParam("id") String id) {
-        final String Resault = FacultiesServices.deleteFaculties(id);
+        final String Resault = facultiesServices.deleteFaculties(id);
         return ResponseEntity.ok(Resault);
     }
 
     @PostMapping("/disable")
     public ResponseEntity<String> disableFaculty(@RequestParam("id") String id) {
-        final String Resault = FacultiesServices.disableFaculties(id);
+        final String Resault = facultiesServices.disableFaculties(id);
         return ResponseEntity.ok(Resault);
     }
 
     @PostMapping("/enable")
     public ResponseEntity<String> enableFaculty(@RequestParam(required = false, name = "id") String id) {
-        final String Resault = FacultiesServices.enableFaculties(id);
+        final String Resault = facultiesServices.enableFaculties(id);
         return ResponseEntity.ok(Resault);
     }
 

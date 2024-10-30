@@ -4,6 +4,9 @@ import "./assets/tailwind.css";
 import VueRouter from "vue-router";
 import admin from "./Admin/Home/admin.vue";
 import main from "./Public/Home/home.vue";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
+import "./tailwind.css";
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -20,7 +23,6 @@ const router = new VueRouter({
   ],
 });
 Vue.config.productionTip = false;
-
 
 new Vue({
   render: (h) => h(App),
