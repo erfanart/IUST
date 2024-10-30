@@ -41,3 +41,7 @@ data-store:
       dir: "DataStore/public/news"
       images:
         dir: "DataStore/public/news/images"
+    labs:
+      dir: "DataStore/public/labs"
+      images:
+        dir: "DataStore/public/labs/images"
